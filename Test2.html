@@ -167,16 +167,16 @@ UpdateGUI();
 }
 function SetTemplate (){
 		switch (CFG.Template) {
-			case "BKS PZ88"		:	UpdateConfigSet ("#SL=2750#SH=900#TH=300#HD=2000#PF=508#PH=22.3#PW=80#PI=4#PD=419#PC=5");break
-			case "Best"			:	UpdateConfigSet ("#SL=2650#SH=810#TH=300#HD=2000#PF=205#PH=0#PW=130#PI=3.5#PD=380#PC=6");break
-			case "Arrow"		:	UpdateConfigSet ("#SL=3150#SH=850#TH=300#HD=2000#PF=673#PH=5.7#PW=152#PI=3.6#PD=394#PC=6");break;
-			case "American"		:	UpdateConfigSet ("#SL=2300#SH=720#TH=300#HD=2000#PF=400#PH=0#PW=100#PI=4#PD=317#PC=6");break;
-			case "Kwikset"		:	UpdateConfigSet ("#SL=2850#SH=850#TH=300#HD=2000#PF=627#PH=1.4#PW=200#PI=5.9#PD=381#PC=5");break;
-			case "Schlage"		:	UpdateConfigSet ("#SL=2750#SH=880#TH=300#HD=2000#PF=586#PH=2.9#PW=100#PI=3.8#PD=396#PC=5");break;
-			case "Master"		:	UpdateConfigSet ("#SL=2200#SH=700#TH=300#HD=2000#PF=470#PH=0#PW=100#PI=4#PD=320#PC=5");break;
-			case "Sargent"		:	UpdateConfigSet ("#SL=2900#SH=840#TH=300#HD=2000#PF=549#PH=0.6#PW=160#PI=5.2#PD=396#PC=5");break;
-			case "Weiser"		:	UpdateConfigSet ("#SL=2750#SH=840#TH=300#HD=2000#PF=602#PH=4#PW=200#PI=4.6000000000000005#PD=396#PC=5");break;
-			case "GreenteQ"		:	UpdateConfigSet ("#SL=2750#SH=860#TH=300#HD=2000#PF=560#PH=2#PW=150#PI=4.9#PD=338#PC=6");break;
+			case "FAB 4102"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=520#PH=25#PW=120#PI=50#PD=400#PC=5");break
+			case "FAB OLD"		:	UpdateConfigSet ("#SL=2760#SH=790#TH=300#HD=2000#PF=510#PH=30#PW=0#PI=50#PD=400#PC=5");break
+			case "FAB 50/EURO PLUS"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=500#PH=45#PW=100#PI=50#PD=400#PC=5");break;
+			case "FAB 6pin"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=420#PH=25#PW=120#PI=50#PD=400#PC=6");break;
+			case "GUARD/EVVA"	:	UpdateConfigSet ("#SL=2760#SH=850#TH=300#HD=2000#PF=520#PH=20#PW=150#PI=50#PD=400#PC=5");break;
+			case "Wilka"		:	UpdateConfigSet ("#SL=2855#SH=840#TH=300#HD=2000#PF=440#PH=23#PW=85#PI=40#PD=363#PC=6");break;
+			case "DECENTIS/Nabob"		:	UpdateConfigSet ("#SL=2740#SH=840#TH=300#HD=2000#PF=575#PH=15#PW=120#PI=50#PD=400#PC=5");break;
+			case "EURO SECURE"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=550#PH=15#PW=90#PI=50#PD=330#PC=6");break;
+			case "Weiser"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=520#PH=25#PW=120#PI=50#PD=400#PC=5");break;
+			case "GreenteQ"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=520#PH=25#PW=120#PI=50#PD=400#PC=5");break;
 		}; setValue()
 }
 
@@ -188,7 +188,7 @@ window.onload = function() {
   ConfigGUI.add(CFG, 'MeasureSize').onChange(setValue);
 
   // "Corbin DH Z", "Corbin X", "Corbin Z", "Russwin","Weslock", "Yale"
-  ConfigGUI.add (CFG, "Template", ["Default", "BKS PZ88", "Best", "Kwikset","Schlage","Master", "American", "Arrow",  "Sargent", "Weiser",  ,"GreenteQ"]).onChange(SetTemplate);
+  ConfigGUI.add (CFG, "Template", ["Default", "FAB 4102", "FAB OLD", "FAB 50/EURO PLUS","FAB 6pin","GUARD/EVVA", "Wilka", "DECENTIS/Nabob",  "EURO SECURE", "Weiser",  ,"GreenteQ"]).onChange(SetTemplate);
   ConfigGUI.add (CFG, "CFGString");
 
   var SaveFolder = ConfigGUI.addFolder('Save');
