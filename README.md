@@ -1,8 +1,7 @@
 # KeyGenerator
-Generates a key from a keycode
+Forked from Phreak87
+Generates a key from a keycode.
 
-![KeyGen](https://github.com/Phreak87/KeyGenerator/blob/main/KeyGen.png "KeyGen")
+Not too flexible right now.
 
-You can try on (not fully working):
-
-https://jsfiddle.net/2v79aqnz/6/embedded/result/?username=Phreak87
+You can try this [here at raw.githack](https://raw.githubusercontent.com/santomet/KeyGenerator/main/Test2.html)
