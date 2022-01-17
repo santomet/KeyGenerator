@@ -256,7 +256,7 @@ if (CFG.showKey == true) {
 if (CFG.showPins == true) {
  
 var P1L =  SL + (CFG.FirstPinPos / 10) + (0 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
-var P1T  = SB - CFG.PinHeight - ((CFG.Pin1Code - 1) * CFG.PinIncrease)                                            // 0 Shaft - Min-Pin Höhe
+var P1T  = SB - (CFG.PinHeight / 10) - ((CFG.Pin1Code - 1) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
 var P1D  = SB - P1T + 1                                                                                                                                                                                 // Delta
 P1 = new Two.Path([
 new Two.Anchor(P1L,P1T, 0, 0, 0, 0, Two.Commands.move),                                                                           // Pin1 Mitte
@@ -268,7 +268,7 @@ new Two.Anchor(P1L - PW , P1T, 0, 0, 0, 0, Two.Commands.line)                   
 
 // -------------------------------------------------------------------------------------------------------------------
 var P2L =  SL + (CFG.FirstPinPos / 10) + (1 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
-var P2T  = SB - CFG.PinHeight - ((CFG.Pin2Code - 1) * CFG.PinIncrease)                                            // 0 Shaft - Min-Pin Höhe
+var P2T  = SB - (CFG.PinHeight / 10) - ((CFG.Pin2Code - 1) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
 var P2D  = SB - P2T + 1                                                                                                                                                                                 // Delta
 P2 = new Two.Path([
 new Two.Anchor(P2L,P2T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
@@ -279,7 +279,7 @@ new Two.Anchor(P2L - PW , P2T, 0, 0, 0, 0, Two.Commands.line)                   
 ], false, false, false); P2.noStroke();P2.fill = 'white'; two.add(P2);
 // -------------------------------------------------------------------------------------------------------------------
 var P3L =  SL + (CFG.FirstPinPos / 10) + (2 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
-var P3T  = SB - CFG.PinHeight - ((CFG.Pin3Code - 1) * CFG.PinIncrease)                                            // 0 Shaft - Min-Pin Höhe
+var P3T  = SB - (CFG.PinHeight / 10) - ((CFG.Pin3Code - 1) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
 var P3D  = SB - P3T + 1                                                                                                                                                                                 // Delta
 P3 = new Two.Path([
 new Two.Anchor(P3L,P3T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
@@ -290,7 +290,7 @@ new Two.Anchor(P3L - PW , P3T, 0, 0, 0, 0, Two.Commands.line)                   
 ], false, false, false); P3.noStroke();P3.fill = 'white'; two.add(P3);
 // -------------------------------------------------------------------------------------------------------------------
 var P4L =  SL + (CFG.FirstPinPos / 10) + (3 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
-var P4T  = SB - CFG.PinHeight - ((CFG.Pin4Code - 1) * CFG.PinIncrease)                                            // 0 Shaft - Min-Pin Höhe
+var P4T  = SB - (CFG.PinHeight / 10) - ((CFG.Pin4Code - 1) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
 var P4D  = SB - P4T + 1                                                                                                                                                                                 // Delta
 P4 = new Two.Path([
 new Two.Anchor(P4L,P4T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
@@ -302,7 +302,7 @@ new Two.Anchor(P4L - PW , P4T, 0, 0, 0, 0, Two.Commands.line)                   
 // -------------------------------------------------------------------------------------------------------------------
 if (CFG.PinCount >= 5){
 var P5L =  SL + (CFG.FirstPinPos / 10) + (4 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
-var P5T  = SB - CFG.PinHeight - ((CFG.Pin5Code - 1) * CFG.PinIncrease)                                            // 0 Shaft - Min-Pin Höhe
+var P5T  = SB - (CFG.PinHeight / 10) - ((CFG.Pin5Code - 1) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
 var P5D  = SB - P5T + 1                                                                                                                                                                                 // Delta
 P5 = new Two.Path([
 new Two.Anchor(P5L,P5T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
@@ -315,7 +315,7 @@ new Two.Anchor(P5L - PW , P5T, 0, 0, 0, 0, Two.Commands.line)                   
 // -------------------------------------------------------------------------------------------------------------------
 if (CFG.PinCount >= 6){
 var P6L =  SL + (CFG.FirstPinPos / 10) + (5 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
-var P6T  = SB - CFG.PinHeight - ((CFG.Pin6Code - 1) * CFG.PinIncrease)                                            // 0 Shaft - Min-Pin Höhe
+var P6T  = SB - (CFG.PinHeight / 10) - ((CFG.Pin6Code - 1) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
 var P6D  = SB - P6T + 1                                                                                                                                                                                 // Delta
 P6 = new Two.Path([
 new Two.Anchor(P6L,P6T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
@@ -328,7 +328,7 @@ new Two.Anchor(P6L - PW , P6T, 0, 0, 0, 0, Two.Commands.line)                   
 // -------------------------------------------------------------------------------------------------------------------
 if (CFG.PinCount >= 7){
 var P7L =  SL + (CFG.FirstPinPos / 10) + (6 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
-var P7T  = SB - CFG.PinHeight - ((CFG.Pin7Code - 1) * CFG.PinIncrease)                                            // 0 Shaft - Min-Pin Höhe
+var P7T  = SB - (CFG.PinHeight / 10) - ((CFG.Pin7Code - 1) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
 var P7D  = SB - P7T + 1                                                                                                                                                                                 // Delta
 P7 = new Two.Path([
 new Two.Anchor(P7L,P7T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
@@ -384,7 +384,7 @@ LineTXT = two.makeText (CFG.ShaftLength,SL + (CFG.ShaftLength / 20), (SB * 2) - 
 // Debug Pin-Heights
 // -------------------------------------------
 for (var i = 1; i <= CFG.PinDepths; i++) {
-            PH = SB - CFG.PinHeight - ((i - 1) * CFG.PinIncrease);  // Pin-Hoehe bei Zähler I
+            PH = SB - (CFG.PinHeight / 10) - ((i - 1) * (CFG.PinIncrease / 10));  // Pin-Hoehe bei Zähler I
             PW = SL + (CFG.ShaftLength / 10) + (12-i-1) * 20        // Weite des Strichs
             PH1 = two.makeLine (SL,PH,PW,PH);PH1.stroke  = 'lightgray';two.add (PH1);	// Höhe
             PHB1 = two.makeLine (PW,PH,PW,ST);PHB1.stroke  = 'lightgray';two.add (PHB1); // Nach unten
