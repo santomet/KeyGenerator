@@ -385,10 +385,11 @@ LineTXT = two.makeText (CFG.ShaftLength,SL + (CFG.ShaftLength / 20), (SB * 2) - 
 // -------------------------------------------
 for (var i = 1; i <= CFG.PinDepths; i++) {
             PH = SB - (CFG.PinHeight / 10) - ((i - 1) * (CFG.PinIncrease / 10));  // Pin-Hoehe bei Zähler I
+			PT = CFG.ShaftHeigth - (CFG.PinHeight) - ((i - 1) * (CFG.PinIncrease)); //just the value
             PW = SL + (CFG.ShaftLength / 10) + (12-i-1) * 20        // Weite des Strichs
             PH1 = two.makeLine (SL,PH,PW,PH);PH1.stroke  = 'lightgray';two.add (PH1);	// Höhe
             PHB1 = two.makeLine (PW,PH,PW,ST);PHB1.stroke  = 'lightgray';two.add (PHB1); // Nach unten
-            PHT1 = two.makeText ( i + ':' + ((ST - PH) * -12).toFixed(0),PW +5,ST +15 );PHT1.size = '8'; PHT1.rotation = 90 * (Math.PI/180);   
+            PHT1 = two.makeText ( i + ':' + ((PT)).toFixed(0),PW +5,ST +15 );PHT1.size = '8'; PHT1.rotation = 90 * (Math.PI/180);   
 
             if (i == 4) {
             PX1 = two.makeLine (SL,PH,SL-20,PH);PX1.stroke  = 'gray';two.add (PX1);
