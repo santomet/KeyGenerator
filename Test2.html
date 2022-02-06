@@ -486,7 +486,11 @@ CFG.CFGString = "#SL="+ CFG.ShaftLength +
 				"#PW="+ CFG.PinWidth    +
 				"#PI="+ CFG.PinIncrease +
 				"#PD="+ CFG.PinDistance +
-				"#PC="+ CFG.PinCount;
+				"#PA="+ CFG.PinAngle    +
+				"#PC="+ CFG.PinCount    +
+				"#CMAX="+ CFG.CodeMax   +
+				"#CMIN="+ CFG.CodeMin   +
+				"#CI=" + (CFG.CodeIncreasing ? "true" : "false");
 				
 UpdateGUI();
 
