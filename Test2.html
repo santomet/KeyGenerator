@@ -7,6 +7,10 @@
 <div id="A1"/>
 <script type="text/javascript">
 
+function getTanFromDegrees(degrees) {
+  return Math.tan(degrees * (Math.PI / 180));
+}
+
 function savePng(svgEl, name) {
     if (typeof window.XMLSerializer != "undefined") {
         var svgData = (new XMLSerializer()).serializeToString(svgEl);
@@ -106,6 +110,7 @@ this.PinDistance = 400; // P2
 
 this.PinCount = 5;
 this.PinWidth = 120; // W2
+this.PinAngle = 90;
 this.PinHeight = 10; // W1 (Bezogen auf niedrigste Codierung)
 this.PinIncrease = 50; // W3
 
@@ -164,9 +169,10 @@ function UpdateConfigSet(Text){
 			case "PW": CFG.PinWidth    = parseFloat(res2[1]);break;
 			case "PI": CFG.PinIncrease = parseFloat(res2[1]);break;
 			case "PD": CFG.PinDistance = parseFloat(res2[1]);break;
+			case "PA": CFG.PinAngle    = parseFloat(res2[1]);break;
 			case "PC": CFG.PinCount    = parseFloat(res2[1]);break;
-			case "CMAX": CFG.CodeMax    = parseFloat(res2[1]);break;
-			case "CMIN": CFG.CodeMin    = parseFloat(res2[1]);break;
+			case "CMAX": CFG.CodeMax   = parseFloat(res2[1]);break;
+			case "CMIN": CFG.CodeMin   = parseFloat(res2[1]);break;
 			case "CI": CFG.CodeIncreasing    = (res2[1] == 'true');break;
 		}
 	}
@@ -175,15 +181,15 @@ UpdateGUI();
 }
 function SetTemplate (){
 		switch (CFG.Template) {
-			case "FAB 4102"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=520#PH=25#PW=120#PI=50#PD=400#PC=5#CMIN=0#CMAX=8#CI=true");break
-			case "FAB OLD"		:	UpdateConfigSet ("#SL=2760#SH=790#TH=300#HD=2000#PF=510#PH=30#PW=0#PI=50#PD=400#PC=5#CMIN=1#CMAX=8#CI=true");break
-			case "FAB 50/EURO PLUS"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=500#PH=45#PW=100#PI=50#PD=400#PC=5#CMIN=2#CMAX=8#CI=false");break;
-			case "FAB 6pin"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=420#PH=25#PW=120#PI=50#PD=400#PC=6#CMIN=0#CMAX=8#CI=true");break;
-			case "GUARD/EVVA"	:	UpdateConfigSet ("#SL=2760#SH=850#TH=300#HD=2000#PF=520#PH=20#PW=150#PI=50#PD=400#PC=5#CMIN=1#CMAX=10#CI=true");break;
-			case "Wilka"		:	UpdateConfigSet ("#SL=2855#SH=840#TH=300#HD=2000#PF=440#PH=23#PW=85#PI=40#PD=363#PC=6#CMIN=0#CMAX=9#CI=true");break;
-			case "DECENTIS/Nabob"		:	UpdateConfigSet ("#SL=2740#SH=840#TH=300#HD=2000#PF=575#PH=15#PW=120#PI=50#PD=400#PC=5#CMIN=0#CMAX=8#CI=true");break;
-			case "EURO SECURE"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=550#PH=15#PW=90#PI=50#PD=330#PC=6#CMIN=1#CMAX=9#CI=true");break;
-			case "FAB NG"		:	UpdateConfigSet ("#SL=2570#SH=860#TH=350#HD=2000#PF=350#PH=10#PW=120#PI=25#PD=350#PC=6#CMIN=0#CMAX=20#CI=true");break;
+			case "FAB 4102"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=520#PH=25#PW=120#PI=50#PD=400#PA=90#PC=5#CMIN=0#CMAX=8#CI=true");break
+			case "FAB OLD"		:	UpdateConfigSet ("#SL=2760#SH=790#TH=300#HD=2000#PF=510#PH=30#PW=0#PI=50#PD=400#PA=110#PC=5#CMIN=1#CMAX=8#CI=true");break
+			case "FAB 50/EURO PLUS"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=500#PH=45#PW=100#PI=50#PD=400#PA=90#PC=5#CMIN=2#CMAX=8#CI=false");break;
+			case "FAB 6pin"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=420#PH=25#PW=120#PI=50#PD=400#PA=90#PC=6#CMIN=0#CMAX=8#CI=true");break;
+			case "GUARD/EVVA"	:	UpdateConfigSet ("#SL=2760#SH=850#TH=300#HD=2000#PF=520#PH=20#PW=150#PI=50#PD=400#PA=90#PC=5#CMIN=1#CMAX=10#CI=true");break;
+			case "Wilka"		:	UpdateConfigSet ("#SL=2855#SH=840#TH=300#HD=2000#PF=440#PH=23#PW=85#PI=40#PD=363#PA=100#PC=6#CMIN=0#CMAX=9#CI=true");break;
+			case "DECENTIS/Nabob"		:	UpdateConfigSet ("#SL=2740#SH=840#TH=300#HD=2000#PF=575#PH=15#PW=120#PI=50#PD=400#PA=100#PC=5#CMIN=0#CMAX=8#CI=true");break;
+			case "EURO SECURE"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=550#PH=15#PW=90#PI=50#PD=330#PA=90#PC=6#CMIN=1#CMAX=9#CI=true");break;
+			case "FAB NG"		:	UpdateConfigSet ("#SL=2570#SH=860#TH=350#HD=2000#PF=350#PH=10#PW=120#PI=25#PD=350#PA=90#PC=6#CMIN=0#CMAX=20#CI=true");break;
 			case "GreenteQ"		:	UpdateConfigSet ("#SL=2740#SH=850#TH=300#HD=2000#PF=520#PH=25#PW=120#PI=50#PD=400#PC=5");break;
 		}; setPinMinMax()
 }
@@ -217,6 +223,7 @@ window.onload = function() {
   PinFolder.add(CFG,'FirstPinPos').min(1).step(1).onChange(setValue);
   PinFolder.add(CFG,'PinHeight').min(0).onChange(setValue);
   PinFolder.add(CFG,'PinWidth').min(0).onChange(setValue);
+  PinFolder.add(CFG,'PinAngle').min(40).max(179).onChange(setValue);
   PinFolder.add(CFG,'PinIncrease').min(1).step(0.1).onChange(setValue);
   PinFolder.add(CFG,'PinDistance').min(1).step(1).onChange(setValue);
   PinFolder.add(CFG,'PinCount').min(4).max(8).step(1).onChange(setValue);
@@ -282,63 +289,70 @@ if (CFG.showKey == true) {
             two.add(Shaft);
 }
 
+var angleCoeff = getTanFromDegrees((CFG.PinAngle / 2));
+
 
 if (CFG.showPins == true) {
  
 var P1L =  SL + (CFG.FirstPinPos / 10) + (0 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
 var P1T  = SB - (CFG.PinHeight / 10) - ((CFG.CodeIncreasing ? CFG.Pin1Code - CFG.CodeMin : CFG.CodeMax - CFG.Pin1Code) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
-var P1D  = SB - P1T + 1                                                                                                                                                                                 // Delta
+var P1D  = SB - P1T + 1          
+var P1DAngled = P1D * angleCoeff;                                                                                                                                                                     // Delta
 P1 = new Two.Path([
 new Two.Anchor(P1L,P1T, 0, 0, 0, 0, Two.Commands.move),                                                                           // Pin1 Mitte
 new Two.Anchor(P1L + PW, P1T, 0, 0, 0, 0, Two.Commands.line),                                                                   // Stück nach rechts (Weite / 2)
-new Two.Anchor(P1L + PW + P1D , P1T + P1D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
-new Two.Anchor(P1L - PW - P1D , P1T + P1D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
+new Two.Anchor(P1L + PW + P1DAngled , P1T + P1D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
+new Two.Anchor(P1L - PW - P1DAngled , P1T + P1D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
 new Two.Anchor(P1L - PW , P1T, 0, 0, 0, 0, Two.Commands.line)                                                                    // im 45° Winkel nach Rechts
 ], false, false, false); P1.noStroke();P1.fill = 'white'; two.add(P1);
 
 // -------------------------------------------------------------------------------------------------------------------
 var P2L =  SL + (CFG.FirstPinPos / 10) + (1 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
 var P2T  = SB - (CFG.PinHeight / 10) - ((CFG.CodeIncreasing ? CFG.Pin2Code - CFG.CodeMin : CFG.CodeMax - CFG.Pin2Code) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
-var P2D  = SB - P2T + 1                                                                                                                                                                                 // Delta
+var P2D  = SB - P2T + 1 
+var P2DAngled = P2D * angleCoeff;                                                                                                                                                                                // Delta
 P2 = new Two.Path([
 new Two.Anchor(P2L,P2T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
 new Two.Anchor(P2L + PW, P2T, 0, 0, 0, 0, Two.Commands.line),                                                                   // Stück nach rechts (Weite / 2)
-new Two.Anchor(P2L + PW + P2D , P2T + P2D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
-new Two.Anchor(P2L - PW - P2D , P2T + P2D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
+new Two.Anchor(P2L + PW + P2DAngled , P2T + P2D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
+new Two.Anchor(P2L - PW - P2DAngled , P2T + P2D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
 new Two.Anchor(P2L - PW , P2T, 0, 0, 0, 0, Two.Commands.line)                                                                    // im 45° Winkel nach Rechts
 ], false, false, false); P2.noStroke();P2.fill = 'white'; two.add(P2);
 // -------------------------------------------------------------------------------------------------------------------
 var P3L =  SL + (CFG.FirstPinPos / 10) + (2 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
 var P3T  = SB - (CFG.PinHeight / 10) - ((CFG.CodeIncreasing ? CFG.Pin3Code - CFG.CodeMin : CFG.CodeMax - CFG.Pin3Code) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
-var P3D  = SB - P3T + 1                                                                                                                                                                                 // Delta
+var P3D  = SB - P3T + 1 
+var P3DAngled = P3D * angleCoeff;                                                                                                                                                                                // Delta
 P3 = new Two.Path([
 new Two.Anchor(P3L,P3T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
 new Two.Anchor(P3L + PW, P3T, 0, 0, 0, 0, Two.Commands.line),                                                                   // Stück nach rechts (Weite / 2)
-new Two.Anchor(P3L + PW + P3D , P3T + P3D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
-new Two.Anchor(P3L - PW - P3D , P3T + P3D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
+new Two.Anchor(P3L + PW + P3DAngled , P3T + P3D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
+new Two.Anchor(P3L - PW - P3DAngled , P3T + P3D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
 new Two.Anchor(P3L - PW , P3T, 0, 0, 0, 0, Two.Commands.line)                                                                    // im 45° Winkel nach Rechts
 ], false, false, false); P3.noStroke();P3.fill = 'white'; two.add(P3);
 // -------------------------------------------------------------------------------------------------------------------
 var P4L =  SL + (CFG.FirstPinPos / 10) + (3 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
 var P4T  = SB - (CFG.PinHeight / 10) - ((CFG.CodeIncreasing ? CFG.Pin4Code - CFG.CodeMin : CFG.CodeMax - CFG.Pin4Code) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
-var P4D  = SB - P4T + 1                                                                                                                                                                                 // Delta
+var P4D  = SB - P4T + 1  
+var P4DAngled = P4D * angleCoeff;                                                                                                                                                                               // Delta
 P4 = new Two.Path([
 new Two.Anchor(P4L,P4T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
 new Two.Anchor(P4L + PW, P4T, 0, 0, 0, 0, Two.Commands.line),                                                                   // Stück nach rechts (Weite / 2)
-new Two.Anchor(P4L + PW + P4D , P4T + P4D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
-new Two.Anchor(P4L - PW - P4D , P4T + P4D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
+new Two.Anchor(P4L + PW + P4DAngled , P4T + P4D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
+new Two.Anchor(P4L - PW - P4DAngled , P4T + P4D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
 new Two.Anchor(P4L - PW , P4T, 0, 0, 0, 0, Two.Commands.line)                                                                    // im 45° Winkel nach Rechts
 ], false, false, false); P4.noStroke();P4.fill = 'white'; two.add(P4);
 // -------------------------------------------------------------------------------------------------------------------
 if (CFG.PinCount >= 5){
 var P5L =  SL + (CFG.FirstPinPos / 10) + (4 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
 var P5T  = SB - (CFG.PinHeight / 10) - ((CFG.CodeIncreasing ? CFG.Pin5Code - CFG.CodeMin : CFG.CodeMax - CFG.Pin5Code) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
-var P5D  = SB - P5T + 1                                                                                                                                                                                 // Delta
+var P5D  = SB - P5T + 1
+var P5DAngled = P5D * angleCoeff;                                                                                                                                                                                 // Delta
 P5 = new Two.Path([
 new Two.Anchor(P5L,P5T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
 new Two.Anchor(P5L + PW, P5T, 0, 0, 0, 0, Two.Commands.line),                                                                   // Stück nach rechts (Weite / 2)
-new Two.Anchor(P5L + PW + P5D , P5T + P5D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
-new Two.Anchor(P5L - PW - P5D , P5T + P5D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
+new Two.Anchor(P5L + PW + P5DAngled , P5T + P5D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
+new Two.Anchor(P5L - PW - P5DAngled , P5T + P5D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
 new Two.Anchor(P5L - PW , P5T, 0, 0, 0, 0, Two.Commands.line)                                                                    // im 45° Winkel nach Rechts
 ], false, false, false); P5.noStroke();P5.fill = 'white'; two.add(P5);
 }
@@ -346,12 +360,13 @@ new Two.Anchor(P5L - PW , P5T, 0, 0, 0, 0, Two.Commands.line)                   
 if (CFG.PinCount >= 6){
 var P6L =  SL + (CFG.FirstPinPos / 10) + (5 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
 var P6T  = SB - (CFG.PinHeight / 10) - ((CFG.CodeIncreasing ? CFG.Pin6Code - CFG.CodeMin : CFG.CodeMax - CFG.Pin6Code) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
-var P6D  = SB - P6T + 1                                                                                                                                                                                 // Delta
+var P6D  = SB - P6T + 1  
+var P6DAngled = P6D * angleCoeff;                                                                                                                                                                               // Delta
 P6 = new Two.Path([
 new Two.Anchor(P6L,P6T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
 new Two.Anchor(P6L + PW, P6T, 0, 0, 0, 0, Two.Commands.line),                                                                   // Stück nach rechts (Weite / 2)
-new Two.Anchor(P6L + PW + P6D , P6T + P6D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
-new Two.Anchor(P6L - PW - P6D , P6T + P6D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
+new Two.Anchor(P6L + PW + P6DAngled , P6T + P6D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
+new Two.Anchor(P6L - PW - P6DAngled , P6T + P6D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
 new Two.Anchor(P6L - PW , P6T, 0, 0, 0, 0, Two.Commands.line)                                                                    // im 45° Winkel nach Rechts
 ], false, false, false); P6.noStroke();P6.fill = 'white'; two.add(P6);
 }
@@ -359,12 +374,13 @@ new Two.Anchor(P6L - PW , P6T, 0, 0, 0, 0, Two.Commands.line)                   
 if (CFG.PinCount >= 7){
 var P7L =  SL + (CFG.FirstPinPos / 10) + (6 * (CFG.PinDistance / 10));                                                                               // 0 Shaft + Erste Pin-Pos
 var P7T  = SB - (CFG.PinHeight / 10) - ((CFG.CodeIncreasing ? CFG.Pin7Code - CFG.CodeMin : CFG.CodeMax - CFG.Pin7Code) * (CFG.PinIncrease / 10))                                            // 0 Shaft - Min-Pin Höhe
-var P7D  = SB - P7T + 1                                                                                                                                                                                 // Delta
+var P7D  = SB - P7T + 1  
+var P7DAngled = P7D * angleCoeff;                                                                                                                                                                               // Delta
 P7 = new Two.Path([
 new Two.Anchor(P7L,P7T, 0, 0, 0, 0, Two.Commands.move),                                                                          // Pin1 Mitte
 new Two.Anchor(P7L + PW, P7T, 0, 0, 0, 0, Two.Commands.line),                                                                   // Stück nach rechts (Weite / 2)
-new Two.Anchor(P7L + PW + P7D , P7T + P7D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
-new Two.Anchor(P7L - PW - P7D , P7T + P7D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
+new Two.Anchor(P7L + PW + P7DAngled , P7T + P7D, 0, 0, 0, 0, Two.Commands.line),                                  // im 45° Winkel nach Rechts
+new Two.Anchor(P7L - PW - P7DAngled , P7T + P7D, 0, 0, 0, 0, Two.Commands.line),                                    // Nach Links
 new Two.Anchor(P7L - PW , P7T, 0, 0, 0, 0, Two.Commands.line)                                                                    // im 45° Winkel nach Rechts
 ], false, false, false); P7.noStroke();P7.fill = 'white'; two.add(P7);
 }
